@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #CATEGORIES = ['supermarket', 'utilities', 'home']
+  has_many :budgets
+  has_many :transactions
 
 end
 
