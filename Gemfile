@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem 'faker'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -75,3 +76,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "chartkick", "~> 5.0"
+
+gem "groupdate", "~> 6.4"
