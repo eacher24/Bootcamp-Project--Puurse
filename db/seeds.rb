@@ -1,64 +1,68 @@
-#johnsmith = User.create(first_name: 'John', last_name: 'Smith' email: 'johnsmith@gmail.com', password: 'Password123')
+require 'faker'
+goethe = User.create(first_name: 'Johann', last_name: 'Goethe', email: 'goethe@gmail.com', password: 'secret')
 
-restaurant = category.create!(name: 'restaurant')
+restaurant = Category.create!(name: 'restaurant')
 restaurant_list = ["kfc",'mcdonald','nandos','starbucks','dominoes']
 
-supermarket = category.create!(name: 'supermarket')
+supermarket = Category.create!(name: 'supermarket')
 supermarket_list = ["asda",'tesco','aldi','lidl','waitrose']
 
-subscriptions = category.create!(name: 'subcriptions')
+subscription = Category.create!(name: 'subcriptions')
 subcriptions_list = ["spotify",'netflix','the economist','the gym','disney']
 
-utilities = category.create!(name: 'utilities')
+utilities = Category.create!(name: 'utilities')
 utilities_list = ["edf",'british gas','thames water','octopus','three']
 
-home = category.create!(name: 'home')
+home = Category.create!(name: 'home')
 home_list = ["rent",'council tax', 'insurance', 'cleaner', 'repairs']
 
 bank = ['barclays', 'hsbc', 'natwest', 'revolut']
 
+
+count = 0
 10.times do |i|
-  5.times do |i|
+  5.times do |x|
     Transaction.create!(
-      user_id: 1,
+      user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Restaurant.unique.name + "(#{restaurant_list[i]})",
+      retailer: Faker::Restaurant.unique.name + "(#{restaurant_list[x]})",
       category: restaurant,
       bank: bank.sample
     )
     Transaction.create!(
-      user_id: 1,
+      user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Company.unique.name + "(#{supermarket_list[i]})",
-      category: groceries,
+      retailer: Faker::Company.unique.name + "(#{supermarket_list[x]})",
+      category: supermarket,
       bank: bank.sample
       )
-      Transaction.create!(
-        user_id: 1,
-        date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-        amount: Faker::Number.decimal(l_digits: 2),
-        retailer: Faker::Company.unique.name + "(#{subcriptions_list[i]})",
-        category: subcriptions,
-        bank: bank.sample
-      )
-      Transaction.create!(
-        user_id: 1,
-        date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-        amount: Faker::Number.decimal(l_digits: 2),
-        retailer: Faker::Company.unique.name + "(#{utilities_list[i]})",
-        category: utilities,
-        bank: bank.sample
-      )
-      Transaction.create!(
-        user_id: 1,
-        date: Faker::Date.between(from: 1.year.ago, to: Date.today),
-        amount: Faker::Number.decimal(l_digits: 2),
-        retailer: Faker::Company.unique.name + "(#{bills_list[i]})",
-        category: bills,
-        bank: bank.sample
-      )
+    Transaction.create!(
+      user: goethe,
+      date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+      amount: Faker::Number.decimal(l_digits: 2),
+      retailer: Faker::Company.unique.name + "(#{subcriptions_list[x]})",
+      category: subscription,
+      bank: bank.sample
+    )
+    Transaction.create!(
+      user: goethe,
+      date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+      amount: Faker::Number.decimal(l_digits: 2),
+      retailer: Faker::Company.unique.name + "(#{utilities_list[x]})",
+      category: utilities,
+      bank: bank.sample
+    )
+    Transaction.create!(
+      user: goethe,
+      date: Faker::Date.between(from: 1.year.ago, to: Date.today),
+      amount: Faker::Number.decimal(l_digits: 2),
+      retailer: Faker::Company.unique.name + "(#{home_list[x]})",
+      category: home,
+      bank: bank.sample
+    )
+    count += 5
   end
-  puts 'created'
 end
+puts "created #{count} user transactions for 5 categories"
