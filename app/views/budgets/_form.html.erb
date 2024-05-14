@@ -1,0 +1,12 @@
+<%= form_with(model: budget, local: true) do |form| %>
+
+ <div class="field">
+    <%= form.label :max_limit %>
+    <%= form.number_field :max_limit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save' %>
+  </div>
+
+<% end %>

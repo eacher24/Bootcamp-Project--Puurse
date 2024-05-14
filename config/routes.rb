@@ -9,4 +9,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  #routes for budgets
+  resources :categories do
+    resources :budgets, except: [:index, :show]
+    # Nested routes for budgets under categories
+  end
+
+    #Routes for managing transactions
+  resources :transactions, only: [:index]
+
 end
