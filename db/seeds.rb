@@ -26,7 +26,7 @@ count = 0
       user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Restaurant.unique.name + "(#{restaurant_list[x]})",
+      retailer: restaurant_list[x],
       category: restaurant,
       bank: bank.sample
     )
@@ -34,7 +34,7 @@ count = 0
       user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Company.unique.name + "(#{supermarket_list[x]})",
+      retailer: supermarket_list[x],
       category: supermarket,
       bank: bank.sample
       )
@@ -42,7 +42,7 @@ count = 0
       user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Company.unique.name + "(#{subcriptions_list[x]})",
+      retailer: subcriptions_list[x],
       category: subscription,
       bank: bank.sample
     )
@@ -50,7 +50,7 @@ count = 0
       user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Company.unique.name + "(#{utilities_list[x]})",
+      retailer: utilities_list[x],
       category: utilities,
       bank: bank.sample
     )
@@ -58,7 +58,7 @@ count = 0
       user: goethe,
       date: Faker::Date.between(from: 1.year.ago, to: Date.today),
       amount: Faker::Number.decimal(l_digits: 2),
-      retailer: Faker::Company.unique.name + "(#{home_list[x]})",
+      retailer: home_list[x],
       category: home,
       bank: bank.sample
     )
