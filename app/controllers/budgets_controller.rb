@@ -21,6 +21,7 @@ class BudgetsController < ApplicationController
   #edit budget
   def edit
     @budget = current_user.budgets.find(params[:id])
+    #@budget = Budgets.find(params[:id])
   end
 
   #update budget
@@ -50,6 +51,6 @@ class BudgetsController < ApplicationController
 
   #strong params needed to create budget
   def budget_params
-    params.require(:budget).permit(:user_id, :category_id, :max_limit)
+    params.require(:budget).permit(:category_id, :max_limit)
   end
 end

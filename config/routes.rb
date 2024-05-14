@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     # Nested routes for budgets under categories
   end
 
-    # Routes for managing transactions
-    # resources :transactions, except: [:index, :show]
+    #Routes for managing transactions
+  resources :transactions, only: [:index]
 
 end
