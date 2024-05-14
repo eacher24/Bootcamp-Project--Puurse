@@ -5,7 +5,9 @@ class TransactionsController < ApplicationController
     user_transactions = current_user.transactions
     # array to store each transacion's information
     @transactions = []
+    monthly = false
     @total = 0
+
     if params[:period].present?
       user_transactions = search_by_days(user_transactions, params[:period])
     end
@@ -20,6 +22,7 @@ class TransactionsController < ApplicationController
 
     if params[:category].present?
       user_transactions = search_by_category(user_transactions, params[:category])
+      monthly = true
     end
 
     user_transactions.each do |transa|
@@ -29,9 +32,15 @@ class TransactionsController < ApplicationController
       @transactions << transaction
       @total += transa.amount
     end
+
+    if monthly
+      @total /= 12
+    end
+
   end
 
   private
+
 
   def search_by_days(transactions, days)
     require 'date'

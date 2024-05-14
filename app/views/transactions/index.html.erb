@@ -1,4 +1,7 @@
 <h1>Transactions</h1>
+<% if @notice%>
+  <p>You are over by <%= @notice[:amount_over]%></p>
+<% end %>
 <hr>
 <div class="container">
   <div class="row justify-content-center">
