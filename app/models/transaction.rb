@@ -8,4 +8,11 @@ class Transaction < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+
+  include PgSearch::Model
+  pg_search_scope :search_by_category_id,
+    against: [ :category_id],
+    using: {
+      tsearch: { prefix: false } # <-- now `superman batm` will return something!
+    }
 end
