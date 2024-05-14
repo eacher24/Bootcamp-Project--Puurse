@@ -66,3 +66,19 @@ count = 0
   end
 end
 puts "created #{count} user transactions for 5 categories"
+
+
+transactions = Transaction.all
+Category.all.each do |category|
+  transactions = category.transactions
+  total = 0
+  transactions.each do |transa|
+    total += transa.amount
+  end
+  total = (total * 100).floor / 100.0
+  monthly = total / 12
+  monthly = (monthly * 100).floor / 100.0
+
+  Category.update(total_spend: total, monthly_spend: monthly)
+  puts 'updated', Category.name
+end
