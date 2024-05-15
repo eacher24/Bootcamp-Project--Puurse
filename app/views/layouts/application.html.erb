@@ -8,11 +8,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class="d-flex">
+      <% if user_signed_in? %>
+        <%= render "shared/navbar" %>
+      <% end %>
+
+
+      <div class="flex-grow-1">
+        <%= yield %>
+      </div>
+    </div>
+
+
   </body>
 </html>
