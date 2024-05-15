@@ -5,7 +5,14 @@ class TransactionsController < ApplicationController
     user_transactions = current_user.transactions
     # array to store each transacion's information
     @transactions = []
-    @total = 0
+    @overall_spend = 0
+
+    if params[:category].present?
+      user_transactions = search_by_category(user_transactions, params[:category])
+      @monthly_spend = Category.find_by(name: params[:category]).monthly_spend
+      @totat_spend = Category.find_by(name: params[:category]).total_spend
+    end
+
     if params[:period].present?
       user_transactions = search_by_days(user_transactions, params[:period])
     end
@@ -17,21 +24,19 @@ class TransactionsController < ApplicationController
     if params[:amount].present?
       user_transactions = search_by_amount(user_transactions, params[:amount])
     end
-
-    if params[:category].present?
-      user_transactions = search_by_category(user_transactions, params[:category])
-    end
-
-    user_transactions.each do |transa|
+    sorted_transactions = user_transactions.sort_by { |transa| transa.date }
+    sorted_transactions.each do |transa|
       # for each transaction pass it to the function to get the its information ie.its amount, date ...
       transaction = transaction_info(transa)
       # store the information in the @transactions array
       @transactions << transaction
-      @total += transa.amount
+      @overall_spend += transa.amount
     end
+    # use these value when the user
   end
 
   private
+
 
   def search_by_days(transactions, days)
     require 'date'

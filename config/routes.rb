@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
-
+  get 'analytics', to: 'pages#analytics', as: 'analytics'
 
   # Defines the root path route ("/")
   # root "posts#index"

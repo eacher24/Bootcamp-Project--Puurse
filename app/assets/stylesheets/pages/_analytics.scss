@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+}
+
+.analytics-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 200px;
+
+
+  .a-form {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+
+    .a-input {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      border: 1px solid black;
+      border-radius: 2px;
+    }
+  }
+
+}
+
+.analytics-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  .area-chart {
+    width: 50%;
+  }
+  .pie-chart {
+    width: 50%;
+  }
+}

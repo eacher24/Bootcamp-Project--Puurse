@@ -34,7 +34,7 @@
         </div>
       </div>
       <h2>trasaction count | <%= @transactions.size %></h2>
-      <h2>total | <%= (@total * 100).floor / 100.0 %></h2>
+      <h2>total | <%= (@overall_spend * 100).floor / 100.0 %></h2>
       <hr>
       <div id="transaction">
         <% if @transactions.any? %>
