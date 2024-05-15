@@ -1,55 +1,53 @@
-<h1>Transactions</h1>
-<hr>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
+<div class="page-content">
 
-      <div class="row justify-content-center">
-        <div class="col-sm-8 my-3">
-          <%= form_with url: transactions_path, method: :get, class: "d-flex" do %>
-            <%= hidden_field_tag :category, "utilities" %>
-            <div class="form-group">
-            <%= label_tag "period", "Select Period" %>
-            <%= select_tag :period, options_for_select(
-              [ [],
-                [30],
-                [60],
-                [90],
-                [180],
-                [360]
-              ]
-            ), class: "form-control" %>
-            <%= label_tag "bank", "Select Bank" %>
-            <%= select_tag :bank, options_for_select(
-              [ [],
-                ['natwest'],
-                ['barclays'],
-                ['hsbc'],
-                ['revolut'],
-              ]
-            ), class: "form-control" %>
-          </div>
-            <%= submit_tag "Utilities", name: "", class: "btn btn-primary" %>
-          <% end %>
+  <div class="content-box">
+    <div class="bank-card">
+      <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+    </div>
+    <p> Budget Categories </p>
+    <div class="t-categories">
+      <div class="category">
+        <box-icon name='dashboard' type='solid' ></box-icon>
+      </div>
+
+      <div class="category">
+        <box-icon name='restaurant' color='#ff8a5c' ></box-icon>
+      </div>
+
+      <div class="category">
+        <box-icon name='dashboard' type='solid' ></box-icon>
+      </div>
+
+      <div class="category">
+        <box-icon name='dashboard' type='solid' ></box-icon>
+      </div>
+
+      <div class="category">
+        <box-icon name='dashboard' type='solid' ></box-icon>
+      </div>
+
+      <div class="category">
+        <box-icon name='dashboard' type='solid' ></box-icon>
+      </div>
+
+    </div>
+    <div class="t-info">
+      <p>All Transactions</p>
+      <div class="budget-info">
+        <p>Monthly Total</p>
+        <div class="limit">
+          (Add Limit PLACEHOLDER FOR BUTTON)
         </div>
       </div>
-      <h2>trasaction count | <%= @transactions.size %></h2>
-      <h2>total | <%= (@overall_spend * 100).floor / 100.0 %></h2>
-      <hr>
-      <div id="transaction">
-        <% if @transactions.any? %>
-        <%# iterate through this array and get its values as shown below %>
-          <% @transactions.each do |transaction| %>
-            <h4><%=transaction[:category]%> | <%= transaction[:amount] %></h4>
-            <p><%= transaction[:date] %></p>
-            <p><%= transaction[:retailer] %></p>
-            <p><%= transaction[:bank] %></p>
-            <p>budget: <%= transaction[:budget] %></p>
-          <% end %>
-        <% else %>
-          <em>Sorry, no transactions found.</em>
-        <% end %>
+    </div>
+    <div class="transactions">
+      <% @transactions.each do |transaction| %>
+      <div class="t-card">
+        <p><%= transaction[:date] %></p>
+        <p><%= transaction[:retailer] %></p>
+        <p><%= transaction[:bank] %></p>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
