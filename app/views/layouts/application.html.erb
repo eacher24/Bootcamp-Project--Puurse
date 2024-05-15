@@ -10,9 +10,20 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <%= render "shared/flashes" %>
 
-    <%= yield %>
+    <div class="d-flex">
+      <% if user_signed_in? %>
+        <%= render "shared/navbar" %>
+      <% end %>
+
+
+      <div class="flex-grow-1">
+        <%= yield %>
+      </div>
+    </div>
+
+
   </body>
 </html>
