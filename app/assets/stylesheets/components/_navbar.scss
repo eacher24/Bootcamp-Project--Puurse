@@ -50,6 +50,7 @@
 }
 
 .nav-button {
+  display: inherit;
   flex-direction: row;
   background-color: #BADFDB;
   margin-block: 2px;
@@ -58,6 +59,11 @@
   text-decoration: none;
   align-items: center;
   padding-left: 12px;
+  color: #404040;
+  * {
+    border: 1px solid red;
+  }
+
 }
 
 .nav-button:hover {
@@ -65,7 +71,9 @@
   transition-delay: 100ms;
 }
 
+
 p {
-  display: inherit;
+  display: flex;
   align-items: center;
+  margin-top: 4px;
 }
