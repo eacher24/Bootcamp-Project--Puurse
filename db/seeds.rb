@@ -79,6 +79,6 @@ Category.all.each do |category|
   monthly = total / 12
   monthly = (monthly * 100).floor / 100.0
 
-  Category.update(total_spend: total, monthly_spend: monthly)
-  puts 'updated', Category.name
+  category.update(total_spend: total, monthly_spend: monthly)
+  puts "updated #{category.name}"
 end

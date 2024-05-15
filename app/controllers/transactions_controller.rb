@@ -24,8 +24,8 @@ class TransactionsController < ApplicationController
     if params[:amount].present?
       user_transactions = search_by_amount(user_transactions, params[:amount])
     end
-
-    user_transactions.each do |transa|
+    sorted_transactions = user_transactions.sort_by { |transa| transa.date }
+    sorted_transactions.each do |transa|
       # for each transaction pass it to the function to get the its information ie.its amount, date ...
       transaction = transaction_info(transa)
       # store the information in the @transactions array
