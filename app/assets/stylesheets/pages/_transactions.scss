@@ -14,12 +14,15 @@
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+  border-radius: 40px;
+  font-size: x-large;
 }
 
 .t-categories {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+
 }
 
 .categories {
@@ -33,7 +36,6 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 2rem;
-
 }
 
 .t-card {
@@ -42,4 +44,14 @@
   flex-direction: row;
   gap: 2rem;
   margin-top: 1rem;
+}
+
+.bank-card {
+  margin: auto;
+  padding: 100px;
+  align-items: center;
+}
+
+.h1 {
+  color: red;
 }
