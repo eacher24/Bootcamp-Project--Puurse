@@ -16,6 +16,7 @@
   flex-direction: column;
   gap: 2rem;
 
+
   h3{
     text-align: center;
   }
@@ -32,18 +33,24 @@
   h4 {
     text-align: center;
   }
+
+  border-radius: 40px;
+  font-size: x-large;
+
 }
 
 .t-categories {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+
 }
 
 .budget-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   align-items: center;
   width: 100%;
   padding-inline: 4.5rem;
@@ -52,6 +59,9 @@
 .amount {
   font-size: 2.5rem;
   font-weight: bold;
+
+  gap: 2rem;
+
 }
 
 
@@ -85,4 +95,14 @@
               0 16px 24px rgba(0, 0, 0, 0.15),
               0 24px 36px rgba(0, 0, 0, 0.15);
   }
+}
+
+.bank-card {
+  margin: auto;
+  padding: 100px;
+  align-items: center;
+}
+
+.h1 {
+  color: red;
 }

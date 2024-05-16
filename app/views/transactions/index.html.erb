@@ -1,5 +1,6 @@
 <div class="page-content">
 
+
   <div class="content-box" data-controller="categories" >
     <div class="bank-card">
       <%= link_to transactions_url do%>
@@ -19,9 +20,11 @@
         <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
 
+
       <% elsif params[:category] == 'subscriptions' %>
         <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
+
 
       <% elsif params[:category] == 'utilities' %>
         <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
