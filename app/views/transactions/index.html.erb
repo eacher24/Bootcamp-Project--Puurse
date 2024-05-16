@@ -1,10 +1,21 @@
+<h1> Transactions </h1>
 <div class="page-content">
 
 
   <div class="content-box" data-controller="categories" >
     <div class="bank-card">
       <%= link_to transactions_url do%>
-        <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+        <%# <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+    </div>
+    <div class="flip-card-back">
+      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+    </div>
+  </div>
+</div>
       <% end%>
     </div>
     <%if @page_category%>
@@ -14,10 +25,10 @@
     <div class="category-icons">
     <% if @page_category %>
       <%if params[:category] == 'restaurant'%>
-        <box-icon color='#ff8a5c' name='restaurant' animation='tada' ></box-icon>
+        <box-icon color='#ff8a5c' name='restaurant' animation='rotate' ></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
       <% elsif params[:category] == 'supermarket' %>
-        <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
+        <box-icon color='#ff8a5c' animation="rotate" name='cart-alt'type="solid"></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
 
 
@@ -67,7 +78,7 @@
         <%if @page_category%>
           <p>Monthly spend <span class="amount">£<%=(@monthly_spend * 100).floor/100.0%></span></p>
         <%else%>
-          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
+          <p>Total spend <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
       </div>
       <div class="limit">
