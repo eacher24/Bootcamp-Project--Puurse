@@ -1,17 +1,19 @@
 <div class="nav">
   <div class="logo">
-    <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+    <%= link_to root_path, class: "home-link" do %>
+      <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+    <% end %>
   </div>
 
   <div class="main">
     Main
 
-    <%= link_to "Dashboard", class: "nav-button" do %>
+    <%= link_to root_path, class: "nav-button" do %>
       <box-icon name='home' type='solid' color='#404040' ></box-icon>
-      <p>Dashboard</p>
+      <p>Home</p>
     <% end %>
 
-    <%= link_to "Transactions", class: "nav-button" do %>
+    <%= link_to transactions_path, class: "nav-button" do %>
       <box-icon name='transfer-alt' type='solid' color='#404040'></box-icon>
       <p>Transactions</p>
     <% end %>
@@ -21,7 +23,7 @@
       <p>Cards</p>
     <% end %>
 
-    <%= link_to "Analytics", class: "nav-button" do %>
+    <%= link_to analytics_path , class: "nav-button" do %>
       <box-icon name='pie-chart-alt-2' type='solid' color='#404040'></box-icon>
       <p>Analytics</p>
     <% end %>
@@ -56,10 +58,4 @@
       <%end%>
     </div>
   </div>
-
-
-
-
-
-
 </div>
