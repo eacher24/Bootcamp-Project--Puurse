@@ -1,3 +1,7 @@
+.analytics-page {
+  background-color: #BADFDB;
+}
+
 h1 {
   text-align: center;
 }
@@ -5,35 +9,75 @@ h1 {
 .analytics-form {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
 
+  h3 {
+    margin-top: 1rem;
+
+    span {
+      color: red;
+    }
+  }
 
   .a-form {
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: 200px;
+
+    label {
+      text-align: center;
+    }
 
     .a-input {
       display: flex;
       flex-direction: row;
-      gap: 0.5rem;
-      border: 1px solid black;
+      gap: 1rem;
       border-radius: 2px;
+      font-weight: bold;
+
+      select {
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 8px 12px rgba(0, 0, 0, 0.1),
+                0 16px 24px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
     }
   }
 
+  .a-submit {
+    font-size: 0.5rem;
+    padding: 0.1rem 1.7rem;
+    border-radius: 1rem;
+    background-color: #ff8a5c;
+    color: #404040;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 8px 12px rgba(0, 0, 0, 0.1),
+                0 16px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+
+  .a-submit:hover {
+    transform: translateY(-4px); /* Slightly lifts the card */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
+              0 16px 24px rgba(0, 0, 0, 0.15),
+              0 24px 36px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .analytics-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  // justify-content: space-between;
   padding: 1rem;
 
   .area-chart {
-    width: 50%;
+    width: 100%;
   }
   .pie-chart {
-    width: 50%;
+    width: 100%;
   }
 }

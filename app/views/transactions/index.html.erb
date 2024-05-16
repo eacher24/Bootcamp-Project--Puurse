@@ -1,53 +1,85 @@
 <div class="page-content">
 
-  <div class="content-box">
+  <div class="content-box" data-controller="categories" >
     <div class="bank-card">
-      <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+      <%= link_to transactions_url do%>
+        <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+      <% end%>
     </div>
-    <p> Budget Categories </p>
+    <%if @page_category%>
+      <%else%>
+        <h3>All Transactions</h3>
+      <%end %>
+    <div class="category-icons">
+    <% if @page_category %>
+      <%if params[:category] == 'restaurant'%>
+        <box-icon color='#ff8a5c' name='restaurant' animation='tada' ></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+      <% elsif params[:category] == 'supermarket' %>
+        <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% elsif params[:category] == 'subscriptions' %>
+        <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% elsif params[:category] == 'utilities' %>
+        <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% elsif params[:category] == 'home' %>
+        <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% end%>
+    <% else %>
+      <box-icon color='#ff8a5c' animation="tada-hover" name='dashboard'type="solid"></box-icon>
+    <% end %>
+    </div>
+
     <div class="t-categories">
-      <div class="category">
-        <box-icon name='dashboard' type='solid' ></box-icon>
-      </div>
-
-      <div class="category">
-        <box-icon name='restaurant' color='#ff8a5c' ></box-icon>
-      </div>
-
-      <div class="category">
-        <box-icon name='dashboard' type='solid' ></box-icon>
-      </div>
-
-      <div class="category">
-        <box-icon name='dashboard' type='solid' ></box-icon>
-      </div>
-
-      <div class="category">
-        <box-icon name='dashboard' type='solid' ></box-icon>
-      </div>
-
-      <div class="category">
-        <box-icon name='dashboard' type='solid' ></box-icon>
-      </div>
-
-    </div>
-    <div class="t-info">
-      <p>All Transactions</p>
-      <div class="budget-info">
-        <p>Monthly Total</p>
-        <div class="limit">
-          (Add Limit PLACEHOLDER FOR BUTTON)
+      <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form', data: {categories_target: 'form'}}  do %>
+        <div class="input-box">
+          <span>category</span>
+          <%= select_tag :category, options_for_select([[],['utilities'], ['supermarket'],['restaurant'],['home'],['subscriptions']]), class: "form-control form-category", data: {categories_target: 'period'} %>
         </div>
-      </div>
-    </div>
-    <div class="transactions">
-      <% @transactions.each do |transaction| %>
-      <div class="t-card">
-        <p><%= transaction[:date] %></p>
-        <p><%= transaction[:retailer] %></p>
-        <p><%= transaction[:bank] %></p>
-      </div>
+
+        <div class="input-box">
+          <span>period</span>
+          <%= select_tag :period, options_for_select([[],[30], [60],[90],[120]]), class: "form-control form-input", data: {categories_target: 'period'} %>
+        </div>
+
+        <div class="input-box">
+          <span>bank</span>
+          <%= select_tag :bank, options_for_select([[],['natwest'], ['barclays'],['revolut'],['hsbc']]), class: "form-control form-input", data: {categories_target: 'bank'} %>
+        </div>
+        <div>
+          <%= submit_tag 'submit', class:'form-submit'%>
+
+        </div>
       <% end %>
     </div>
+    <div class="budget-info">
+      <div class="total-spend">
+        <%if @page_category%>
+          <p>Monthly spend <span class="amount">£<%=(@monthly_spend * 100).floor/100.0%></span></p>
+        <%else%>
+          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
+        <% end%>
+      </div>
+      <div class="limit">
+        <% if @page_category%>
+          <% if @budget%>
+            <span>£<%=@budget_limit%></span>
+            <%= link_to 'Edit limit', edit_category_budget_path(@category), class: 'limit-btn' %>
+          <%else%>
+            <%= link_to '+ Add limit', new_category_budget_path(@category), class: 'limit-btn' %>
+          <%end%>
+        <% else%>
+
+        <% end %>
+      </div>
+    </div>
+    <%= render 'transactions' %>
   </div>
 </div>

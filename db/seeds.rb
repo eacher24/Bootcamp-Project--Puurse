@@ -7,7 +7,7 @@ restaurant_list = ["kfc",'mcdonald','nandos','starbucks','dominoes']
 supermarket = Category.create!(name: 'supermarket')
 supermarket_list = ["asda",'tesco','aldi','lidl','waitrose']
 
-subscription = Category.create!(name: 'subcriptions')
+subscription = Category.create!(name: 'subscriptions')
 subcriptions_list = ["spotify",'netflix','the economist','the gym','disney']
 
 utilities = Category.create!(name: 'utilities')

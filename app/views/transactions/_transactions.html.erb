@@ -1,0 +1,36 @@
+<div class="transactions" data-categories-target="list">
+  <% @transactions.each do |transaction| %>
+  <div class="t-card">
+    <div class="t-card-info">
+      <box-icon name='basket' color='#ff8a5c' ></box-icon>
+      <p><%= transaction[:retailer].capitalize %></p>
+    </div>
+    <div class="t-card-info">
+      <box-icon name='calendar' type='solid' color='#ff8a5c' ></box-icon>
+      <p><%= transaction[:date] %></p>
+    </div>
+    <div class="t-card-info">
+      <box-icon name='bank' type='solid' color='#ff8a5c' ></box-icon>
+      <p><%= transaction[:bank].capitalize %></p>
+    </div>
+    <div class="t-card-info">
+      <box-icon name='money' color='#31e80e' ></box-icon>
+      <p>£<%= transaction[:amount] %></p>
+    </div>
+    <div class="t-card-info">
+      <%if transaction[:category] == 'restaurant'%>
+        <box-icon color='#ff8a5c' animation="tada" name='restaurant'type="solid"></box-icon>
+      <% elsif transaction[:category] == 'supermarket' %>
+        <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
+      <% elsif transaction[:category] == 'subscriptions' %>
+        <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
+      <% elsif transaction[:category] == 'utilities' %>
+        <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
+      <% elsif transaction[:category] == 'home' %>
+        <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon>
+      <% end%>
+      <p><%= transaction[:category] %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

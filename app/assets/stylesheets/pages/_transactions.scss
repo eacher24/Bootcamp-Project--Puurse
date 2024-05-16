@@ -3,17 +3,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5%;
+  padding: 1rem;
 }
 
 .content-box {
+  padding: 1rem;
   background-color: #BADFDB;
-  width: 1200px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+
+  h3{
+    text-align: center;
+  }
+}
+
+.category-icons {
+  display: flex;
+  flex-direction: column;
+  box-icon {
+    margin-left: 2rem;
+    width: 80px;
+    height: 80px;
+  }
+  h4 {
+    text-align: center;
+  }
 }
 
 .t-categories {
@@ -22,24 +40,49 @@
   gap: 2rem;
 }
 
-.categories {
-  background-color: #F6F5F5;
-  width: 50px;
-  padding: 5px;
-}
-
-.t-info {
+.budget-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 2rem;
-
+  align-items: center;
+  width: 100%;
+  padding-inline: 4.5rem;
 }
 
-.t-card {
-  background-color: #F6F5F5;
+.amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+
+.limit {
+  color: white;
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+  }
+  a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: black;
+    padding-block: 0.5rem;
+    border-radius: 1rem;
+    padding-inline: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+              0 8px 12px rgba(0, 0, 0, 0.1),
+              0 16px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  a:hover {
+    transform: translateY(-10px); /* Slightly lifts the card */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
+              0 16px 24px rgba(0, 0, 0, 0.15),
+              0 24px 36px rgba(0, 0, 0, 0.15);
+  }
 }

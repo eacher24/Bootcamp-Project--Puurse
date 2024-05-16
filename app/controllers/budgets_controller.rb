@@ -20,8 +20,8 @@ class BudgetsController < ApplicationController
 
   #edit budget
   def edit
-    @budget = current_user.budgets.find(params[:id])
-    #@budget = Budgets.find(params[:id])
+    @budget = @category.budgets.first
+    raise
   end
 
   #update budget
@@ -46,7 +46,7 @@ class BudgetsController < ApplicationController
   private
   #set category based on category name
   def set_category
-    @category = Category.find_by(name: params[:category_name])
+    @category = Category.find(params[:category_id])
   end
 
   #strong params needed to create budget
