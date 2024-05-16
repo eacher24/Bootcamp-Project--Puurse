@@ -1,10 +1,20 @@
+<h1> Transactions </h1>
 <div class="page-content">
-
 
   <div class="content-box" data-controller="categories" >
     <div class="bank-card">
       <%= link_to transactions_url do%>
-        <%= image_tag("puurse_logo.png", alt: "Image Description") %>
+        <%# <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+    </div>
+    <div class="flip-card-back">
+      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+    </div>
+  </div>
+</div>
       <% end%>
     </div>
     <%if @page_category%>
@@ -14,10 +24,10 @@
     <div class="category-icons">
     <% if @page_category %>
       <%if params[:category] == 'restaurant'%>
-        <box-icon color='#ff8a5c' name='restaurant' animation='tada' ></box-icon>
+        <box-icon color='#ff8a5c' name='restaurant' animation='rotate' ></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
       <% elsif params[:category] == 'supermarket' %>
-        <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
+        <box-icon color='#ff8a5c' animation="rotate" name='cart-alt'type="solid"></box-icon>
         <h4 class="category-title"><%=@page_category%></h4>
 
 
@@ -40,26 +50,39 @@
     <% end %>
     </div>
 
+
     <div class="t-categories">
-      <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form', data: {categories_target: 'form'}}  do %>
-        <div class="input-box">
-          <span>category</span>
-          <%= select_tag :category, options_for_select([[],['utilities'], ['supermarket'],['restaurant'],['home'],['subscriptions']]), class: "form-control form-category" %>
-        </div>
+      <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form'}  do %>
+      <span>category</span>
+      <div class="input-box">
+        <% categories = [['utilities'], ['supermarket'], ['restaurant'], ['home'], ['subscriptions']] %>
+        <% categories.each do |category| %>
+          <%= radio_button_tag 'category', category[0], false, class: 'category-input' %>
+          <%= label_tag "category_#{category[0]}", category[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        <div class="input-box">
-          <span>period</span>
-          <%= select_tag :period, options_for_select([[],[30], [60],[90],[120]]), class: "form-control form-input", data: {categories_target: 'period'} %>
-        </div>
+      <span>period</span>
+      <div class="input-box">
+        <% times = [['30'], ['60'], ['90'], ['120']] %>
+        <% times.each do |period| %>
+          <%= radio_button_tag 'period', period[0], false, class: 'category-input' %>
+          <%= label_tag "period_#{period[0]}", period[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        <div class="input-box">
-          <span>bank</span>
-          <%= select_tag :bank, options_for_select([[],['natwest'], ['barclays'],['revolut'],['hsbc']]), class: "form-control form-input", data: {categories_target: 'bank'} %>
-        </div>
-        <div>
-          <%= submit_tag 'submit', class:'form-submit'%>
+      <span>bank</span>
+      <div class="input-box">
+        <% banks = [['natwest'], ['barclays'], ['revolut'], ['hsbc']] %>
+        <% banks.each do |bank| %>
+          <%= radio_button_tag 'bank', bank[0], false, class: 'category-input' %>
+          <%= label_tag "bank_#{bank[0]}", bank[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        </div>
+      <div>
+        <%= submit_tag 'submit', class:'form-submit'%>
+      </div>
       <% end %>
     </div>
     <div class="budget-info">
@@ -67,9 +90,10 @@
         <%if @page_category%>
           <p>Monthly spend <span class="amount">£<%=(@monthly_spend * 100).floor/100.0%></span></p>
         <%else%>
-          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
+          <p>Total spend <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
       </div>
+      <i style="text-align:center; margin-right: 1rem;"><%=@transactions.size%> transactions</i>
       <div class="limit">
         <% if @page_category%>
           <% if @budget%>
