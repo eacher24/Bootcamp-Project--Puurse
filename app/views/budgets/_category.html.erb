@@ -1,0 +1,26 @@
+<h1> <%@category.name.capitalize%> </h1>
+<div class="budget-content">
+  <div class="budget-hero">
+    <%if @category.name == 'restaurant'%>
+    <div class="category-hero">
+      <h1 class="category-title"><%=@category.name%></h1>
+      <box-icon color='#ff8a5c' name='restaurant' animation='tada' ></box-icon>
+    </div>
+    <%elsif  @category.name == 'supermarket' %>
+      <h1 class="category-title"><%=@category.name%></h1>
+      <box-icon color='#ff8a5c' animation="tada" name='cart-alt'type="solid"></box-icon>
+    <%elsif @category.name == 'subscriptions' %>
+      <h1 class="category-title"><%=@category.name%></h1>
+      <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
+    <%elsif @category.name == 'utilities' %>
+      <h1 class="category-title"><%=@category.name%></h1>
+      <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
+    <% elsif @category.name == 'home' %>
+      <h1 class="category-title"><%=@category.name%></h1>
+      <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon>
+    <% end%>
+  </div>
+  <div class="budget-form">
+    <%= render 'form' %>
+  </div>
+</div>
