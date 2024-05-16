@@ -1,22 +1,27 @@
 <div class="transactions" data-categories-target="list">
   <% @transactions.each do |transaction| %>
   <div class="t-card">
-    <div class="t-card-info">
-      <box-icon name='basket' color='#ff8a5c' ></box-icon>
-      <p><%= transaction[:retailer].capitalize %></p>
+    <div class="left">
+      <div class="t-card-info">
+        <box-icon name='basket' color='#ff8a5c' ></box-icon>
+        <p><%= transaction[:retailer].capitalize %></p>
+      </div>
+
+      <div class="t-card-info">
+        <box-icon name='calendar' type='solid' color='#ff8a5c' ></box-icon>
+        <p><%= transaction[:date] %></p>
+      </div>
     </div>
-    <div class="t-card-info">
-      <box-icon name='calendar' type='solid' color='#ff8a5c' ></box-icon>
-      <p><%= transaction[:date] %></p>
+
+    <div class="right">
+      <div class="t-card-info">
+       
+        <p>£<%= transaction[:amount] %></p>
+      </div>
     </div>
-    <div class="t-card-info">
-      <box-icon name='bank' type='solid' color='#ff8a5c' ></box-icon>
-      <p><%= transaction[:bank].capitalize %></p>
-    </div>
-    <div class="t-card-info">
-      <box-icon name='money' color='#31e80e' ></box-icon>
-      <p>£<%= transaction[:amount] %></p>
-    </div>
+
+
+
     <div class="t-card-info">
       <%if transaction[:category] == 'restaurant'%>
         <box-icon color='#ff8a5c' animation="tada" name='restaurant'type="solid"></box-icon>
