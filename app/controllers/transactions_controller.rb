@@ -9,10 +9,11 @@ class TransactionsController < ApplicationController
     @overall_spend = 0
 
     if params[:category].present?
-      user_transactions = search_by_category(user_transactions, params[:category])
-      @monthly_spend = Category.find_by(name: params[:category]).monthly_spend
-      @totat_spend = Category.find_by(name: params[:category]).total_spend
-      @page_category = params[:category]
+      input = params[:category]
+      user_transactions = search_by_category(user_transactions, input)
+      @monthly_spend = Category.find_by(name: input).monthly_spend
+      @totat_spend = Category.find_by(name: input).total_spend
+      @page_category = input
       category = Category.find_by(name: @page_category)
       budget = category.budgets
       if budget.any?
@@ -49,7 +50,6 @@ class TransactionsController < ApplicationController
     #   format.html
     #   format.text {render partial: 'transacions', formats: [:html] }
     # end
-    # raisex
   end
 
   private

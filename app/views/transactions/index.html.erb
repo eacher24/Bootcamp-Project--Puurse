@@ -1,6 +1,5 @@
 <div class="page-content">
 
-
   <div class="content-box" data-controller="categories" >
     <div class="bank-card">
       <%= link_to transactions_url do%>
@@ -40,26 +39,39 @@
     <% end %>
     </div>
 
+
     <div class="t-categories">
-      <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form', data: {categories_target: 'form'}}  do %>
-        <div class="input-box">
-          <span>category</span>
-          <%= select_tag :category, options_for_select([[],['utilities'], ['supermarket'],['restaurant'],['home'],['subscriptions']]), class: "form-control form-category" %>
-        </div>
+      <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form'}  do %>
+      <span>category</span>
+      <div class="input-box">
+        <% categories = [['utilities'], ['supermarket'], ['restaurant'], ['home'], ['subscriptions']] %>
+        <% categories.each do |category| %>
+          <%= radio_button_tag 'category', category[0], false, class: 'category-input' %>
+          <%= label_tag "category_#{category[0]}", category[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        <div class="input-box">
-          <span>period</span>
-          <%= select_tag :period, options_for_select([[],[30], [60],[90],[120]]), class: "form-control form-input", data: {categories_target: 'period'} %>
-        </div>
+      <span>period</span>
+      <div class="input-box">
+        <% times = [['30'], ['60'], ['90'], ['120']] %>
+        <% times.each do |period| %>
+          <%= radio_button_tag 'period', period[0], false, class: 'category-input' %>
+          <%= label_tag "period_#{period[0]}", period[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        <div class="input-box">
-          <span>bank</span>
-          <%= select_tag :bank, options_for_select([[],['natwest'], ['barclays'],['revolut'],['hsbc']]), class: "form-control form-input", data: {categories_target: 'bank'} %>
-        </div>
-        <div>
-          <%= submit_tag 'submit', class:'form-submit'%>
+      <span>bank</span>
+      <div class="input-box">
+        <% banks = [['natwest'], ['barclays'], ['revolut'], ['hsbc']] %>
+        <% banks.each do |bank| %>
+          <%= radio_button_tag 'bank', bank[0], false, class: 'category-input' %>
+          <%= label_tag "bank_#{bank[0]}", bank[0], class: 'category-label' %><br>
+        <% end %>
+      </div>
 
-        </div>
+      <div>
+        <%= submit_tag 'submit', class:'form-submit'%>
+      </div>
       <% end %>
     </div>
     <div class="budget-info">
@@ -70,6 +82,7 @@
           <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
         <% end%>
       </div>
+      <i style="text-align:center; margin-right: 1rem;"><%=@transactions.size%> transactions</i>
       <div class="limit">
         <% if @page_category%>
           <% if @budget%>
