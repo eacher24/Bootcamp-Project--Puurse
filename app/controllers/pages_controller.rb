@@ -6,18 +6,22 @@ class PagesController < ApplicationController
 
   def analytics
     user_transactions = current_user.transactions
+    @transactions = []
     if params[:period]
       @month = params[:period].to_i
       @range =  @month.month.ago..Time.now
       @days = 30 * params[:period].to_i
-      @transactions = search_by_days(user_transactions, @days)
+      transactions = search_by_days(user_transactions, @days)
     else
       @range = 1.month.ago..Time.now
       @days = 30
-      @transactions = search_by_days(user_transactions, @days)
+      transactions = search_by_days(user_transactions, @days)
     end
-    @total = @transactions.inject(0) { |sum, transaction| sum + transaction.amount }
+    @total = transactions.inject(0) { |sum, transaction| sum + transaction.amount }
     @total = (@total * 100).floor / 100.0
+    transactions.each do |transa|
+      @transactions << transaction_info(transa)
+    end
   end
 
   private
@@ -33,5 +37,16 @@ class PagesController < ApplicationController
     end
     sorted_transactions = selected_transactions.sort_by { |transa| transa.date }
     return sorted_transactions
+  end
+
+  def transaction_info(transaction)
+    details = {
+      amount: transaction.amount,
+      date: transaction.date.strftime('%a, %d %b %Y'),
+      retailer: transaction.retailer,
+      bank: transaction.bank,
+      category: transaction.category.name
+    }
+    return details
   end
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   #routes for budgets
   resources :categories do
-    resources :budgets, except: [:index, :show]
+    resources :budgets, only: [:edit, :new, :create]
     # Nested routes for budgets under categories
   end
 

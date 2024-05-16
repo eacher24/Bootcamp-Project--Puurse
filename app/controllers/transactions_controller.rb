@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
 
   def index
+    # raise
     # give me all the transactions for the current user
     user_transactions = current_user.transactions
     # array to store each transacion's information
@@ -11,6 +12,17 @@ class TransactionsController < ApplicationController
       user_transactions = search_by_category(user_transactions, params[:category])
       @monthly_spend = Category.find_by(name: params[:category]).monthly_spend
       @totat_spend = Category.find_by(name: params[:category]).total_spend
+      @page_category = params[:category]
+      category = Category.find_by(name: @page_category)
+      budget = category.budgets
+      if budget.any?
+        @budget = budget.first
+        @budget_limit = budget.first.max_limit
+      else
+        @budget = false
+      end
+      @monthly_spend = category.monthly_spend
+      @category = category
     end
 
     if params[:period].present?
@@ -33,6 +45,11 @@ class TransactionsController < ApplicationController
       @overall_spend += transa.amount
     end
     # use these value when the user
+    # respond_to do |format|
+    #   format.html
+    #   format.text {render partial: 'transacions', formats: [:html] }
+    # end
+    # raisex
   end
 
   private

@@ -41,13 +41,20 @@
       <box-icon name='cog' type='solid' color='#404040'></box-icon>
       <p>Settings</p>
     <% end %>
-  </div>
-
-
-
-
-  <div class="profile">
-    John
+    <br>
+    <hr>
+    <div class="profile">
+      <%if user_signed_in?%>
+        <%= link_to edit_user_registration_path do %>
+          <span><%=current_user.first_name %></span>
+          <%if current_user.photo.key %>
+            <%= cl_image_tag current_user.profile_photo.key, height: 80, width: 80, crop: :fill, style: 'border-radius: 50%; margin-right:1rem; padding: 0;' %>
+          <% else%>
+            <%= image_tag "profile-photo.jpg" %>
+          <% end %>
+        <%end%>
+      <%end%>
+    </div>
   </div>
 
 

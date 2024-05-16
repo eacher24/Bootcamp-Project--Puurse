@@ -1,12 +1,8 @@
-<%= form_with(model: budget, local: true) do |form| %>
-
- <div class="field">
-    <%= form.label :max_limit %>
-    <%= form.number_field :max_limit %>
+<%= simple_form_for [@category, @budget] do |f|%>
+  <div class="apt-form">
+    <div class="field">
+      <%= f.input :max_limit %>
+    </div>
+    <%= f.submit 'Set limit', class: 'btn' %>
   </div>
-
-  <div class="actions">
-    <%= form.submit 'Save' %>
-  </div>
-
 <% end %>
