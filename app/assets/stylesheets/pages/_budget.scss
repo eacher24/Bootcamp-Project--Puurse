@@ -1,0 +1,60 @@
+.budget-content {
+  padding: 3rem;
+  background-color: #BADFDB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2rem;
+  gap: 4rem;
+
+}
+
+.budget-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-icon {
+    width: 100px;
+    height: 100px;
+    margin-inline: auto;
+    background-color: white;
+    border-radius: 1rem;
+  }
+}
+
+.budget-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  gap: 1rem;
+  margin-inline: auto;
+  padding-bottom: 2.5rem;
+
+  .form-control {
+    border-radius: 1rem;
+  }
+
+  .limit-btn {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: black;
+    padding-block: 0.5rem;
+    border-radius: 1rem;
+    padding-inline: 1.7rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+              0 8px 12px rgba(0, 0, 0, 0.1),
+              0 16px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .limit-btn:hover {
+    transform: translateY(-10px); /* Slightly lifts the card */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
+              0 16px 24px rgba(0, 0, 0, 0.15),
+              0 24px 36px rgba(0, 0, 0, 0.15);
+  }
+
+}

@@ -44,7 +44,7 @@
       <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form', data: {categories_target: 'form'}}  do %>
         <div class="input-box">
           <span>category</span>
-          <%= select_tag :category, options_for_select([[],['utilities'], ['supermarket'],['restaurant'],['home'],['subscriptions']]), class: "form-control form-category", data: {categories_target: 'period'} %>
+          <%= select_tag :category, options_for_select([[],['utilities'], ['supermarket'],['restaurant'],['home'],['subscriptions']]), class: "form-control form-category" %>
         </div>
 
         <div class="input-box">
@@ -74,7 +74,7 @@
         <% if @page_category%>
           <% if @budget%>
             <span>£<%=@budget_limit%></span>
-            <%= link_to 'Edit limit', edit_category_budget_path(@category), class: 'limit-btn' %>
+            <%= link_to 'Edit limit', edit_category_budget_path(@category, @budget), class: 'limit-btn' %>
           <%else%>
             <%= link_to '+ Add limit', new_category_budget_path(@category), class: 'limit-btn' %>
           <%end%>

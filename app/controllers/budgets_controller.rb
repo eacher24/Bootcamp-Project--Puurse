@@ -12,7 +12,7 @@ class BudgetsController < ApplicationController
     @budget.user = current_user # Assign the current user to the budget
     if @budget.save
     #change the root_path
-      redirect_to root_path, notice: 'Budget created successfully.'
+      redirect_to transactions_path, notice: 'Budget created successfully.'
     else
       render :new
     end
@@ -21,7 +21,6 @@ class BudgetsController < ApplicationController
   #edit budget
   def edit
     @budget = @category.budgets.first
-    raise
   end
 
   #update budget
@@ -29,7 +28,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.find(params[:id])
     if @budget.update(budget_params)
       #change the root path
-      redirect_to root_path, notice: 'Budget updated successfully.'
+      redirect_to transactions_path, notice: 'Budget updated successfully.'
     else
       render :edit
     end
@@ -40,13 +39,14 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.find(params[:id])
     @budget.destroy
     #change the root path
-    redirect_to root_path, notice: 'Budget deleted successfully.'
+    redirect_to transactions_path, notice: 'Budget deleted successfully.'
   end
 
   private
   #set category based on category name
   def set_category
     @category = Category.find(params[:category_id])
+    @category_name = @category.name
   end
 
   #strong params needed to create budget

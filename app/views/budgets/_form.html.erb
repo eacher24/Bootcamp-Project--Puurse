@@ -1,8 +1,7 @@
-<%= simple_form_for [@category, @budget] do |f|%>
-  <div class="apt-form">
+<%= simple_form_for [@category, @budget], html: {class: 'budget-form'} do |f|%>
     <div class="field">
       <%= f.input :max_limit %>
     </div>
-    <%= f.submit 'Set limit', class: 'btn' %>
+    <%= f.submit 'Set limit', class: 'limit-btn' %>
   </div>
 <% end %>
