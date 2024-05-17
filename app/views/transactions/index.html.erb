@@ -80,7 +80,7 @@
     <div class="budget-info">
       <div class="total-spend">
         <%if @page_category%>
-          <p>Monthly spend <span class="amount">£<%=(@monthly_spend * 100).floor/100.0%></span></p>
+          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
         <%else%>
           <p>Total spend <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
