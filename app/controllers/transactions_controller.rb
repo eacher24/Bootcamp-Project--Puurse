@@ -45,11 +45,8 @@ class TransactionsController < ApplicationController
       @transactions << transaction
       @overall_spend += transa.amount
     end
-    # use these value when the user
-    # respond_to do |format|
-    #   format.html
-    #   format.text {render partial: 'transacions', formats: [:html] }
-    # end
+
+    # raise
   end
 
   private
