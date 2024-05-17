@@ -61,23 +61,15 @@
           <%= label_tag "category_#{category[0]}", category[0], class: 'category-label' %><br>
         <% end %>
       </div>
-
-      <span>period</span>
-      <div class="input-box">
-        <% times = [['30'], ['60'], ['90'], ['120']] %>
-        <% times.each do |period| %>
-          <%= radio_button_tag 'period', period[0], false, class: 'category-input' %>
-          <%= label_tag "period_#{period[0]}", period[0], class: 'category-label' %><br>
-        <% end %>
-      </div>
-
-      <span>bank</span>
-      <div class="input-box">
-        <% banks = [['natwest'], ['barclays'], ['revolut'], ['hsbc']] %>
-        <% banks.each do |bank| %>
-          <%= radio_button_tag 'bank', bank[0], false, class: 'category-input' %>
-          <%= label_tag "bank_#{bank[0]}", bank[0], class: 'category-label' %><br>
-        <% end %>
+      <div class="select-container">
+        <div class="select-box">
+          <span>period</span>
+          <%= select_tag 'period', options_for_select([[],['30'], ['60'], ['90'], ['120']]), class: 'category-select' %>
+        </div>
+        <div class="select-box">
+          <span>bank</span>
+          <%= select_tag 'bank', options_for_select([[],['natwest'], ['barclays'], ['revolut'], ['hsbc']]), class: 'category-select' %>
+        </div>
       </div>
 
       <div>
@@ -88,7 +80,7 @@
     <div class="budget-info">
       <div class="total-spend">
         <%if @page_category%>
-          <p>Monthly spend <span class="amount">£<%=(@monthly_spend * 100).floor/100.0%></span></p>
+          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
         <%else%>
           <p>Total spend <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>

@@ -4,3 +4,5 @@ we can search for transactions by their period, amount, bank and category (done)
 
 the user can then scroll within that category to view all transactions
 there should be a add limit button on the on transaction page that will update the budget limit for that given transaction category
+
+NOTE: heroku config:set (apki-key)
