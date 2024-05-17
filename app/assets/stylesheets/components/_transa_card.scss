@@ -3,7 +3,12 @@
   height: 400px;
   padding: 0 1rem;
   margin-bottom: 1rem;
-  width: 100%;
+  width: 50%;
+
+
+  *{
+    border: 1px solid red;
+  }
 }
 
 .transactions::-webkit-scrollbar {
@@ -34,8 +39,10 @@
   padding-inline: 2rem;
   background-color: #F6F5F5;
   display: flex;
+  justify-content: space-between;
+
   flex-direction: row;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   gap: 2rem;
   margin-top: 1rem;
   border-radius: 15px;
@@ -44,6 +51,11 @@
               0 16px 24px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+
+  *{
+    border: 1px solid red;
+  }
+
 }
 
 .t-card:hover {
@@ -55,11 +67,62 @@
 
 .t-card-info {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: flex-start;
 }
 
-.t-card{
+
+
+.col2 span{
+  font-weight: bold;
+  font-size: 160%;
+
+}
+
+// .col1 {
+//   display: flex;
+//   align-items: flex-start;
+
+
+// }
+
+.col3 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+
+.col3 p {
+  font-weight: bold;
+  font-size: 180% ;
+
+}
+
+svg {
+
+  width: 100px;
+  height: 100px;
+
+
+}
+
+.left{
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.t-icon {
+  width: 54px;
+  height: 54px;
+
+}
+
+.col1{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
 
 }
