@@ -84,12 +84,14 @@
     font-size: 1.4rem;
     font-weight: bold;
     text-decoration: none;
+    color: #404040;
+    font-family: DM Sans;
   }
   img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    object-fit: contain;
+    object-fit: fill;
 
     margin-top: auto;
     border-top: 1px solid #ACACAC;
