@@ -46,7 +46,7 @@
 
       <% end%>
     <% else %>
-      <box-icon color='#ff8a5c' animation="tada-hover" name='dashboard'type="solid"></box-icon>
+
     <% end %>
     </div>
 
@@ -63,12 +63,12 @@
       </div>
       <div class="select-container">
         <div class="select-box">
-          <span>period</span>
-          <%= select_tag 'period', options_for_select([[],['30'], ['60'], ['90'], ['120']]), class: 'category-select' %>
+          <span>Time Period</span>
+          <%= select_tag 'Time Period', options_for_select([[],['30 Days'], ['60 Days'], ['90 Days'], ['120 Days']]), class: 'category-select' %>
         </div>
         <div class="select-box">
-          <span>bank</span>
-          <%= select_tag 'bank', options_for_select([[],['natwest'], ['barclays'], ['revolut'], ['hsbc']]), class: 'category-select' %>
+          <span>Account</span>
+          <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
         </div>
       </div>
 
