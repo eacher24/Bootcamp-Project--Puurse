@@ -1,3 +1,7 @@
+// *{
+//   border: 2px solid red;
+// }
+
 h1 {
   text-align: left;
   color: #404040;
@@ -21,8 +25,9 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  // gap: 2rem;
   border-radius: 50px;
+  color: #404040;
 
 
   h3{
@@ -37,11 +42,11 @@ h1 {
 .category-icons {
   display: flex;
   flex-direction: column;
-  box-icon {
-    margin-left: 2rem;
-    width: 80px;
-    height: 80px;
-  }
+  // box-icon {
+  //   margin-left: 2rem;
+  //   width: 80px;
+  //   height: 80px;
+  // }
   h4 {
     text-align: center;
   }
@@ -50,6 +55,13 @@ h1 {
   font-size: x-large;
 
 }
+
+.select-container {
+  display: flex;
+  justify-content: baseline;
+}
+
+
 
 .budget-info {
   display: flex;
@@ -103,6 +115,13 @@ h1 {
   }
 }
 
+.limit-btn {
+  color: #F4F4F4;
+  background-color: #404040;
+  display: flex;
+  align-self: center;
+}
+
 .bank-card {
   margin: auto;
   padding: 50px;
@@ -151,4 +170,24 @@ h1 {
 .flip-card-back {
   color: white;
   transform: rotateY(180deg);
+}
+
+// .transactions-size {
+//   display: flex;
+//   flex-direction: column;
+
+// }
+.budget-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+
+}
+.total-spend {
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-end;
+  align-items: end;
+
 }

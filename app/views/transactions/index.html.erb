@@ -21,7 +21,39 @@
       <%else%>
         <h3>All Transactions</h3>
       <%end %>
+
+    <div class="category-icons">
+    <% if @page_category %>
+      <%if params[:category] == 'restaurant'%>
+        <box-icon color='#ff8a5c' name='restaurant' animation='rotate' ></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+      <% elsif params[:category] == 'supermarket' %>
+        <box-icon color='#ff8a5c' animation="rotate" name='cart-alt'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+
+      <% elsif params[:category] == 'subscriptions' %>
+        <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+
+      <% elsif params[:category] == 'utilities' %>
+        <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% elsif params[:category] == 'home' %>
+        <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon>
+        <h4 class="category-title"><%=@page_category%></h4>
+
+      <% end%>
+    <% else %>
+
+    <% end %>
+    </div>
+
+
     <%end%>
+
 
     <div class="t-categories">
       <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form'}  do %>
@@ -35,20 +67,34 @@
       </div>
       <div class="select-container">
         <div class="select-box">
-          <span>period</span>
-          <%= select_tag 'period', options_for_select([[],['30'], ['60'], ['90'], ['120']]), class: 'category-select' %>
+          <span>Time Period</span>
+          <%= select_tag 'Time Period', options_for_select([[],['30 Days'], ['60 Days'], ['90 Days'], ['120 Days']]), class: 'category-select' %>
         </div>
         <div class="select-box">
-          <span>bank</span>
-          <%= select_tag 'bank', options_for_select([[],['natwest'], ['barclays'], ['revolut'], ['hsbc']]), class: 'category-select' %>
-        </div>
-        <div>
+
+          <span>Account</span>
+          <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
+
+         <div>
           <%= submit_tag 'submit', class:'form-submit'%>
+        </div>
+
         </div>
       </div>
       <% end %>
     </div>
     <div class="budget-info">
+
+
+      <div class="total-spend">
+        <%if @page_category%>
+          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
+        <%else%>
+          <p>Total spend: <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
+        <% end%>
+      </div>
+      <i class="transactions-size"><%=@transactions.size%> transactions</i>
+
       <div class="limit">
         <%if !@page_category%>
           <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span>
