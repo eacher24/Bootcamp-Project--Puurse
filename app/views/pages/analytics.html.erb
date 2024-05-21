@@ -4,22 +4,21 @@
   <% if user_signed_in? %>
     <div class="analytics-form">
       <%= form_with url: analytics_path, method: :get, class: "a-form" do %>
-        <%= label_tag "period", "Select Period(months)" %>
         <div class="a-input">
-          <%= select_tag :period, options_for_select([[1], [3],[6],[9],[12]]), class: "form-control form-select-period " %>
+          <%= select_tag :period, options_for_select([["Select Period"],["1 month", 1],["3 months", 3],["6 months", 6],["9 months", 9],["1 year", 12]]), class: "form-control form-select-period " %>
           <%= submit_tag "submit", name: "", class: "a-submit" %>
         </div>
       <% end %>
-      <h3>Last <%= @days %> days: <strong><%=number_to_currency(@total,unit:"£")%> </strong></h3>
+      <h2>Total Spend: <strong><%=number_to_currency(@total,unit:"£")%> </strong></h2>
     </div>
     <div class="analytics-container">
 
       <div class="area-chart">
-
-        <%= area_chart Transaction.group_by_day(:date, range: @range).sum(:amount), height: "400px", class:"line-chart" %>
+        <h3>Your Spending Timeline </h3>
+        <%= area_chart Transaction.group_by_day(:date, range: @range).sum(:amount), height: "550px", class:"line-chart", colors: ["#404040", "#FF8A5C"], xmax: "2024-05-15", max: 250, xtitle: "Date" %>
             <div class="pie-chart">
-        <h3>Monthly Spend by category </h3>
-        <%= pie_chart Category.group(:name).sum(:monthly_spend), height: "500px", library: { title: { text: "Monthly Spend by Category", x: -20 } } %>
+        <h4>Monthly Spend by Category </h4>
+        <%= pie_chart Category.group(:name).sum(:monthly_spend), height: "500px", width: "600px",  legend: "right", colors: ["#FF8A5C", "#404040", "#949494", "#F6F4F4", "#49BEB7"] %>
       </div>
         <%= render 'transactions/transactions' %>
       </div>
