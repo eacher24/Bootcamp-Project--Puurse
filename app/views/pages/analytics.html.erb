@@ -10,7 +10,7 @@
           <%= submit_tag "submit", name: "", class: "a-submit" %>
         </div>
       <% end %>
-      <h3>Last <%= @days %> days: <span>£<%=@total%> </span></h3>
+      <h3>Last <%= @days %> days: <strong><%=number_to_currency(@total,unit:"£")%> </strong></h3>
     </div>
     <div class="analytics-container">
 
