@@ -3,7 +3,20 @@
   <div class="t-card">
     <div class="left">
       <div class="col1">
-        <box-icon name='basket' color='#ff8a5c' class="t-icon"></box-icon>
+        <% if transaction[:category]  == "restaurant" %>
+          <box-icon name='restaurant' color='#ff8a5c' class="t-icon" ></box-icon>
+        <% elsif transaction[:category]  == "supermarket"  %>
+          <box-icon name='cart' type='solid' color='#ff8a5c' class="t-icon"></box-icon>
+        <% elsif transaction[:category]  == "subscriptions"  %>
+           <box-icon name='calendar-check' type='solid' color='#ff8a5c' class="t-icon" ></box-icon>
+        <% elsif transaction[:category]  == "home"  %>
+          <box-icon name='wrench' type='solid' color='#ff8a5c' class="t-icon"></box-icon>
+        <% elsif transaction[:category]  == "utilities" %>
+          <box-icon name='cart' type='solid' color='#ff8a5c' class="t-icon"></box-icon>
+        <% end %>
+
+
+        <%# <box-icon name='basket' color='#ff8a5c' class="t-icon"></box-icon> %>
       </div>
       <div class="col2">
         <span><%= transaction[:retailer].capitalize %></span>

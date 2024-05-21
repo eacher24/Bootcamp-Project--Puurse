@@ -71,14 +71,11 @@
           <%= select_tag 'Time Period', options_for_select([[],['30 Days'], ['60 Days'], ['90 Days'], ['120 Days']]), class: 'category-select' %>
         </div>
         <div class="select-box">
-
           <span>Account</span>
           <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
-
-         <div>
-          <%= submit_tag 'submit', class:'form-submit'%>
         </div>
-
+        <div>
+          <%= submit_tag 'submit', class:'form-submit'%>
         </div>
       </div>
       <% end %>
@@ -86,30 +83,26 @@
     <div class="budget-info">
 
 
-      <div class="total-spend">
+      <div class="total-spend col-4 text-center">
         <%if @page_category%>
-          <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
+          <p>Total spend <span class="amount"><%=number_to_currency((@overall_spend * 100).floor/100.0,unit:"£")%></span></p>
         <%else%>
           <p>Total spend: <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
       </div>
-      <i class="transactions-size"><%=@transactions.size%> transactions</i>
+      <i class="transactions-size col-4 text-center" ><%=@transactions.size%> transactions</i>
 
-      <div class="limit">
-        <%if !@page_category%>
-          <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span>
-        <%end%>
+      <div class="limit col-4 text-center">
+
         <% if @page_category%>
           <% if @budget%>
-            <span><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %>/£<%=@budget_limit * 12%></span>
             <%= link_to 'Edit limit', edit_category_budget_path(@category, @budget), class: 'limit-btn' %>
           <%else%>
-            <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span>
             <%= link_to '+ Add limit', new_category_budget_path(@category), class: 'limit-btn' %>
           <%end%>
         <% end %>
       </div>
-      <i style="text-align:center; margin-right: 1rem;"><%=@transactions.size%> transactions</i>
+
     </div>
     <%= render 'transactions' %>
   </div>
