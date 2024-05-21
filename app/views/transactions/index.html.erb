@@ -69,23 +69,24 @@
         <div class="select-box">
           <span>Account</span>
           <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
-        </div>
-      </div>
 
-      <div>
-        <%= submit_tag 'submit', class:'form-submit'%>
+         <div>
+          <%= submit_tag 'submit', class:'form-submit'%>
+        </div>
+        </div>
       </div>
       <% end %>
     </div>
     <div class="budget-info">
+
       <div class="total-spend">
         <%if @page_category%>
           <p>Total spend <span class="amount">£<%=(@overall_spend * 100).floor/100.0%></span></p>
         <%else%>
-          <p>Total spend <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
+          <p>Total spend: <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
       </div>
-      <i style="text-align:center; margin-right: 1rem;"><%=@transactions.size%> transactions</i>
+      <i class="transactions-size"><%=@transactions.size%> transactions</i>
       <div class="limit">
         <% if @page_category%>
           <% if @budget%>
