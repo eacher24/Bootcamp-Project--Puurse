@@ -11,16 +11,17 @@
       <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
     </div>
     <div class="flip-card-back">
-      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+      <%= image_tag("name_bank_card.png", alt: "Image Description") %>
     </div>
   </div>
 </div>
-      <% end%>
+
     </div>
     <%if @page_category%>
       <%else%>
         <h3>All Transactions</h3>
       <%end %>
+
     <div class="category-icons">
     <% if @page_category %>
       <%if params[:category] == 'restaurant'%>
@@ -51,6 +52,9 @@
     </div>
 
 
+    <%end%>
+
+
     <div class="t-categories">
       <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form'}  do %>
       <span>category</span>
@@ -67,17 +71,20 @@
           <%= select_tag 'Time Period', options_for_select([[],['30 Days'], ['60 Days'], ['90 Days'], ['120 Days']]), class: 'category-select' %>
         </div>
         <div class="select-box">
+
           <span>Account</span>
           <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
 
          <div>
           <%= submit_tag 'submit', class:'form-submit'%>
         </div>
+
         </div>
       </div>
       <% end %>
     </div>
     <div class="budget-info">
+
 
       <div class="total-spend">
         <%if @page_category%>
@@ -87,18 +94,22 @@
         <% end%>
       </div>
       <i class="transactions-size"><%=@transactions.size%> transactions</i>
+
       <div class="limit">
+        <%if !@page_category%>
+          <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span>
+        <%end%>
         <% if @page_category%>
           <% if @budget%>
-            <span>£<%=@budget_limit%></span>
+            <span><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %>/£<%=@budget_limit * 12%></span>
             <%= link_to 'Edit limit', edit_category_budget_path(@category, @budget), class: 'limit-btn' %>
           <%else%>
+            <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span>
             <%= link_to '+ Add limit', new_category_budget_path(@category), class: 'limit-btn' %>
           <%end%>
-        <% else%>
-
         <% end %>
       </div>
+      <i style="text-align:center; margin-right: 1rem;"><%=@transactions.size%> transactions</i>
     </div>
     <%= render 'transactions' %>
   </div>
