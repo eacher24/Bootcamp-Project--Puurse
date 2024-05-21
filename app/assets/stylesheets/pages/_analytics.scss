@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2rem;
     border-radius: 50px;
 }
 
@@ -26,15 +25,25 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 1rem;
+  flex-direction: row;
 
 
-  h3 {
-    margin-top: 1rem;
-    background-color: #BADFDB;
-    padding: 20px;
+  h2 {
+    // background-color: #BADFDB;
     text-align: center;
+    padding-top: 2rem;
+    color: #49BEB7;
+    span {
+      color: #404040
+    }
+  }
+
+  h3, h4 {
+    background-color: #BADFDB;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 30px;
 
     span {
       color: #404040
@@ -90,7 +99,8 @@ h1 {
   }
 
   .form-select-period {
-    width: 100px;
+    width: 160px;
+    border-color: #404040;
   }
 
   .a-submit {
@@ -123,21 +133,16 @@ h1 {
   display: block;
   box-sizing: border-box;
   height: 100%;
-  width: 1200px;
+  width: 900px;
     // width: 700%;
   background-color: #BADFDB;
   }
   .pie-chart {
     width: 100%;
-    padding: 70px;
+    // padding: 70px;
   }
 }
 
-// .transactions {
-//   width: 800px;
-//   align-items: start;
-//   padding: 50px
-// }
 
 .transactions {
   overflow: auto;
@@ -146,4 +151,13 @@ h1 {
   margin-bottom: 1rem;
   width: 100%;
   align-items: center;
+  padding-top: 1rem;
+}
+
+.line-chart {
+  font-size: x-large;
+}
+
+#chart-1 {
+  width: 500px;
 }
