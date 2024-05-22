@@ -15,18 +15,18 @@
 }
 
 .transactions::-webkit-scrollbar-thumb {
-  background: #ff8a5c;
+  background: #49BEB7;
   border-radius: 10px;
   height: 40px;
 }
 
 .transactions::-webkit-scrollbar-thumb:hover {
-  background: #e07a50;
+  background: #49BEB7;
 }
 
 .transactions {
-  scrollbar-width: thin;
-  scrollbar-color: #ff8a5c;
+  scrollbar-width: unset;
+  scrollbar-color: #49BEB7;
 }
 
 .t-card {
