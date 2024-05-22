@@ -8,7 +8,7 @@
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
+      <%= image_tag("front-card2.png", alt: "Image Description") %>
     </div>
     <div class="flip-card-back">
       <%= image_tag("name_bank_card.png", alt: "Image Description") %>
@@ -75,7 +75,7 @@
           <%= select_tag 'Account', options_for_select([[],['Natwest'], ['Barclays'], ['Revolut'], ['HSBC']]), class: 'category-select' %>
         </div>
         <div>
-          <%= submit_tag 'submit', class:'form-submit'%>
+          <%= submit_tag 'Apply', class:'form-submit'%>
         </div>
       </div>
       <% end %>

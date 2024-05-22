@@ -5,8 +5,8 @@
     <div class="analytics-form">
       <%= form_with url: analytics_path, method: :get, class: "a-form" do %>
         <div class="a-input">
-          <%= select_tag :period, options_for_select([["Select Period"],["1 month", 1],["3 months", 3],["6 months", 6],["9 months", 9],["1 year", 12]]), class: "form-control form-select-period " %>
-          <%= submit_tag "submit", name: "", class: "a-submit" %>
+          <%= select_tag :period, options_for_select([["Select Period ▽"],["1 month", 1],["3 months", 3],["6 months", 6],["9 months", 9],["1 year", 12]]), class: "form-control form-select-period", onchange: "this.form.submit()" %>
+          <%# <%= submit_tag "Apply", name: "", class: "a-submit" %>
         </div>
       <% end %>
       <h2>Total Spend: <strong><%=number_to_currency(@total,unit:"£")%> </strong></h2>
