@@ -85,7 +85,7 @@
 
       <div class="total-spend col-4 text-center">
         <%if @page_category%>
-          <p>Total spend <span class="amount"><%=number_to_currency((@overall_spend * 100).floor/100.0,unit:"£")%></span></p>
+          <p>Total spend <span class="amount"><%=number_to_currency((@overall_spend * 100).floor/100.0,unit:"£")%><%="/£#{@budget_limit}" if @budget_limit%></span></p>
         <%else%>
           <p>Total spend: <span class="amount"><%=  number_to_currency((@overall_spend * 100).floor/100.0,unit:"£") %></span></p>
         <% end%>
@@ -96,6 +96,7 @@
 
         <% if @page_category%>
           <% if @budget%>
+
             <%= link_to 'Edit limit', edit_category_budget_path(@category, @budget), class: 'limit-btn' %>
           <%else%>
             <%= link_to '+ Add limit', new_category_budget_path(@category), class: 'limit-btn' %>
