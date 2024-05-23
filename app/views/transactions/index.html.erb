@@ -60,8 +60,9 @@
       <div class="input-box">
         <% categories = [['utilities'], ['supermarket'], ['restaurant'], ['home'], ['subscriptions']] %>
         <% categories.each do |category| %>
-          <%= radio_button_tag 'category', category[0], false, class: 'category-input' %>
-          <%= label_tag "category_#{category[0]}", category[0], class: 'category-label' %><br>
+          <%= radio_button_tag 'category', category[0], false, class: 'category-input'%>
+          <%# <%= raise %>
+          <%= label_tag "category_#{category[0]}", category[0], class: "category-label #{'checkbox-active' if params[:category] == category[0]}" %><br>
         <% end %>
       </div>
       <div class="select-container">

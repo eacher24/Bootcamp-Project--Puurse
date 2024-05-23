@@ -43,7 +43,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.category-label:hover {
+.category-label:hover, .category-label:active {
   background-color: #ff8a5c;
   color: white;
   border: 2px solid #ff8a5c;
@@ -93,4 +93,17 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
               0 16px 24px rgba(0, 0, 0, 0.15),
               0 24px 36px rgba(0, 0, 0, 0.15);
+}
+
+.checkbox-active {
+  // background: red !important;
+  background-color: #ff8a5c;
+  color: white;
+  border: 2px solid #ff8a5c;
+  transform: translateY(-4px); /* Slightly lifts the card */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15),
+              0 16px 24px rgba(0, 0, 0, 0.15),
+              0 24px 36px rgba(0, 0, 0, 0.15);
+
+
 }
