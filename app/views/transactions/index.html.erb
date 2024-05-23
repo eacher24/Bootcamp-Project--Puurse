@@ -3,7 +3,7 @@
 
   <div class="content-box" data-controller="categories" >
     <div class="bank-card">
-      <%= link_to transactions_url do%>
+      <%= link_to transactions_url, class: "text-decoration-none" do%>
         <%# <%= image_tag("blank_bank_card.png", alt: "Image Description") %>
 <div class="flip-card">
   <div class="flip-card-inner">
@@ -24,25 +24,25 @@
 
     <div class="category-icons">
     <% if @page_category %>
-      <%if params[:category] == 'restaurant'%>
-        <box-icon color='#ff8a5c' name='restaurant' animation='rotate' ></box-icon>
+      <%if params[:category] == 'Restaurant'%>
+        <%# <box-icon color='#ff8a5c' name='restaurant' animation='rotate' ></box-icon> %>
         <h4 class="category-title"><%=@page_category%></h4>
       <% elsif params[:category] == 'supermarket' %>
-        <box-icon color='#ff8a5c' animation="rotate" name='cart-alt'type="solid"></box-icon>
+        <%# <box-icon color='#ff8a5c' animation="rotate" name='cart-alt'type="solid"></box-icon> %>
         <h4 class="category-title"><%=@page_category%></h4>
 
 
-      <% elsif params[:category] == 'subscriptions' %>
-        <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon>
+      <% elsif params[:category] == 'Subscriptions' %>
+        <%# <box-icon color='#ff8a5c' animation="tada" name='dice-5'type="solid"></box-icon> %>
         <h4 class="category-title"><%=@page_category%></h4>
 
 
-      <% elsif params[:category] == 'utilities' %>
-        <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon>
+      <% elsif params[:category] == 'Utilities' %>
+        <%# <box-icon color='#ff8a5c' animation="tada" name='wrench'type="solid"></box-icon> %>
         <h4 class="category-title"><%=@page_category%></h4>
 
-      <% elsif params[:category] == 'home' %>
-        <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon>
+      <% elsif params[:category] == 'Home' %>
+        <%# <box-icon color='#ff8a5c' animation="tada" name='home-heart'type="solid"></box-icon> %>
         <h4 class="category-title"><%=@page_category%></h4>
 
       <% end%>
@@ -57,11 +57,11 @@
 
     <div class="t-categories">
       <%= form_with url: transactions_url, method: :get, class: "a-form col-1 ", html: {class: 'search-form'}  do %>
-      <span>category</span>
+      <span>Category</span>
       <div class="input-box">
         <% categories = [['utilities'], ['supermarket'], ['restaurant'], ['home'], ['subscriptions']] %>
         <% categories.each do |category| %>
-          <%= radio_button_tag 'category', category[0], false, class: 'category-input' %>
+          <%= radio_button_tag 'category', category[0], false, class: 'category-input', onchange: 'this.form.submit()' %>
           <%= label_tag "category_#{category[0]}", category[0], class: 'category-label' %><br>
         <% end %>
       </div>
