@@ -13,19 +13,20 @@
       <p>Home</p>
     <% end %>
 
-    <%= link_to transactions_path, class: "nav-button" do %>
-      <box-icon name='transfer-alt' type='solid' color='#404040'></box-icon>
+    <%= link_to transactions_path, class: "nav-button #{'nav-active' if params[:controller] == "transactions" && params[:action] == "index"}" do %>
+      <%# <box-icon name='transfer-alt' type='solid' color='#404040'></box-icon> %>
+      <i class="fa-solid fa-money-bill-transfer"></i>
       <p>Transactions</p>
-    <% end %>
-
-    <%= link_to "Cards", class: "nav-button" do %>
-      <box-icon name='credit-card' type='solid' color='#404040' ></box-icon>
-      <p>Cards</p>
     <% end %>
 
     <%= link_to analytics_path , class: "nav-button" do %>
       <box-icon name='pie-chart-alt-2' type='solid' color='#404040'></box-icon>
       <p>Analytics</p>
+    <% end %>
+
+    <%= link_to "Cards", class: "nav-button" do %>
+      <box-icon name='credit-card' type='solid' color='#404040' ></box-icon>
+      <p>Cards</p>
     <% end %>
 
 
