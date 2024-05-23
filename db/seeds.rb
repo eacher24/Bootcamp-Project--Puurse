@@ -1,5 +1,5 @@
 require 'faker'
-goethe = User.create(first_name: 'Johann', last_name: 'Goethe', email: 'goethe@gmail.com', password: 'secret')
+goethe = User.create(first_name: 'Grace', last_name: 'Thompson', email: 'grace@gmail.com', password: 'secret')
 
 restaurant = Category.create!(name: 'restaurant')
 restaurant_list = ["kfc",'mcdonald','nandos','starbucks','dominoes']

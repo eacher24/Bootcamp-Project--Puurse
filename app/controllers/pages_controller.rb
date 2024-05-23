@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
   end
 
+  def cards
+  end
+
   def analytics
     user_transactions = current_user.transactions
     @transactions = []
