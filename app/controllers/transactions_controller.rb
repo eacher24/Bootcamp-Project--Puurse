@@ -24,7 +24,9 @@ class TransactionsController < ApplicationController
       end
       @monthly_spend = category.monthly_spend
       @category = category
+      # raise
     end
+
 
     if params[:period].present?
       user_transactions = search_by_days(user_transactions, params[:period])
